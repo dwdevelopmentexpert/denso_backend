@@ -30,7 +30,7 @@
                     else
                         location.reload();
                 })
-            })
+            })          
         })
     </script>
 </head>
@@ -114,6 +114,7 @@
         var region = document.getElementById("RegionCode").value;
         window.location.href=value+"&region="+region;
     }
+
     function changeRegion(value){
         var maker_id = document.getElementById("maker_id").value;
         window.location.href=value+"&maker_id="+maker_id;

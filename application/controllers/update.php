@@ -764,12 +764,15 @@ class Update extends CI_Controller {
         }
         
         public function mapping(){
+        	
         	$this->load->model('search_model');
         	$regions = $this->search_model->getregion();
+        	
             if($id = $this->uri->segment(3)){
                 $this->load->model('search_model');
                 $maker_id = $this->input->get("maker_id");
                 $data['maker_id'] = $maker_id;
+                
                 if($this->search_model->valid_maker($maker_id)){
                     $data['makers'] = "";
                     $makers = $this->search_model->getmakers();
@@ -779,6 +782,7 @@ class Update extends CI_Controller {
                 } else {
                     redirect(redirect_get(array("maker_id"=>"001")));
                 }
+                
                 $region = $this->input->get("region");
                 if($regions){
                 	$data['regions'] = "";
@@ -812,6 +816,7 @@ class Update extends CI_Controller {
                 if($temp)
                     $this->db->where_not_in('dealer_id', $temp);
                 $this->db->order_by('dealer.name_eng', 'asc');
+                
                 if(!$region){
                 	$region = $sd_info['region_code'];
                 }
